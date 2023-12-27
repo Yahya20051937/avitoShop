@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+
+    <br/>
+    <br/>
+    <br/>
+
+    <div th:if="${Error != ''}" class="alert alert-danger" role="alert">
+        <span th:text="${Error}"></span>
+    </div>
+
+    <form method="POST" action="/app/addProduct" class="text-center" th:object="${product}" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input type="text" name="productName" id="productName" class="form-control" th:field="*{name}" required>
+        </div>
+        <div class="form-group">
+            <label for="productPrice">Product Price</label>
+            <input type="number" name="productPrice" id="productPrice" class="form-control" th:field="*{price}"required>
+        </div>
+        <div class="form-group">
+            <label for="productCategory">Product Category</label>
+            <select name="productCategory" id="productCategory" class="form-control" th:field="*{category}">
+                <option value="ELECTRONICS">ELECTRONICS</option>
+                <option value="FASHION">FASHION</option>
+                <option value="HOME_FURNITURE">HOME FURNITURE</option>
+                <option value="HEALTH_BEAUTY">HEALTH & BEAUTY</option>
+                <option value="SPORTS_FITNESS">SPORTS & FITNESS</option>
+                <option value="BOOKS">BOOKS</option>
+                <option value="TOYS">TOYS</option>
+                <option value="JEWELRY">JEWELRY</option>
+                <option value="FOOD_BEVERAGE">FOOD & BEVERAGE</option>
+                <option value="AUTOMOTIVE">AUTOMOTIVE</option>
+                <option value="PET_SUPPLIES">PET SUPPLIES</option>
+                <option value="ART_CRAFTS">ART & CRAFTS</option>
+                <option value="MUSIC_INSTRUMENTS">MUSIC INSTRUMENTS</option>
+                <option value="HOME_APPLIANCES">HOME APPLIANCES</option>
+                <option value="GARDEN_OUTDOOR">GARDEN & OUTDOOR</option>
+                <option value="TRAVEL">TRAVEL</option>
+                <option value="BABY_PRODUCTS">BABY PRODUCTS</option>
+                <option value="OFFICE_SUPPLIES">OFFICE SUPPLIES</option>
+                <option value="VIDEO_GAMES">VIDEO GAMES</option>
+                <option value="SPORTING_GOODS">SPORTING GOODS</option>
+                <option value="COMPUTER_SOFTWARE">COMPUTER SOFTWARE</option>
+                <option value="MOBILE_PHONES">MOBILE PHONES</option>
+                <option value="CAMERAS_PHOTOGRAPHY">CAMERAS & PHOTOGRAPHY</option>
+                <option value="WATCHES">WATCHES</option>
+                <option value="LUGGAGE_BAGS">LUGGAGE & BAGS</option>
+                <option value="SHOES">SHOES</option>
+                <option value="SUNGLASSES">SUNGLASSES</option>
+                <option value="HOME_DECOR">HOME DECOR</option>
+                <option value="KITCHEN_DINING">KITCHEN & DINING</option>
+                <option value="FITNESS_EQUIPMENT">FITNESS EQUIPMENT</option>
+                <option value="PERSONAL_CARE">PERSONAL CARE</option>
+                <option value="BEVERAGES">BEVERAGES</option>
+                <option value="CLOTHING_ACCESSORIES">CLOTHING & ACCESSORIES</option>
+                <option value="ELECTRICAL_TOOLS">ELECTRICAL TOOLS</option>
+                <option value="GIFTS_OCCASIONS">GIFTS & OCCASIONS</option>
+                <option value="HOLIDAY_SUPPLIES">HOLIDAY SUPPLIES</option>
+                <option value="INDUSTRIAL_SUPPLIES">INDUSTRIAL SUPPLIES</option>
+                <option value="LAB_SCIENTIFIC">LAB & SCIENTIFIC</option>
+                <option value="MOVIES_TV">MOVIES & TV</option>
+                <option value="MUSICAL_INSTRUMENTS">MUSICAL INSTRUMENTS</option>
+                <option value="PARTY_SUPPLIES">PARTY SUPPLIES</option>
+                <option value="RELIGIOUS_SUPPLIES">RELIGIOUS SUPPLIES</option>
+                <option value="WEDDING_SUPPLIES">WEDDING SUPPLIES</option>
+                <option value="OTHER">OTHER</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="productMainImage">Product Image</label>
+            <input id="productMainImage" type="file" name="mainImage" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="productOtherImages">Other Images (Optional)</label>
+            <input id="productOtherImages" type="file" name="optionalImages" class="form-control" multiple>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="submit">Add Product</button>
+    </form>
+</div>
+</body>
+</html>
